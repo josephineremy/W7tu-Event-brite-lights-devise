@@ -1,19 +1,75 @@
+<h2 class="h1-responsive font-weight-bold my-5">Bienvenue sur ton profil <%= @user.email%></h2>
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.first_name %>
-</p>
+	<div class="my-3 p-3 bg-white rounded box-shadow text-success">
 
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+        <div class="media text-dark pt-3">
+          <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">PRENOM</strong>
+            <%= @user.first_name%>
+          </p>
+        </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        <div class="media text-dark pt-3">
+          <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">NOM</strong>
+            <%= @user.last_name%>
+          </p>
+        </div>
+
+
+         <div class="media text-dark pt-3">
+          <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">DESCRIPTION</strong>
+            <%= @user.description%>
+          </p>
+
+        </div> <div class="media text-dark pt-3">
+          <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">EMAIL</strong>
+            <%= @user.email%>
+          </p>
+        </div>
+
+   </div>
+
+
+</br>
+
+  <% if Event.find_by(admin_id: @user.id) %>
+
+  <h4>Vos événements :</h4>
+</br>
+
+<section>
+<div class="card-deck">
+<%Event.all.each do |event|%>
+<%if event.admin_id == @user.id%>
+<div class="col-sm-4 mb-3">
+<div class="card">
+  <div class="card-header">
+    Event #<%=event.id%>
+  </div>
+  <div class="card-body align-center">
+    <blockquote class="blockquote mb-0">
+      <p><%=event.title%></p>
+      <footer class="blockquote-footer">
+      <div class="row justify-content-between align-self-center mx-3">
+        <p><%=event.start_date%></p>
+       </div>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+</div>
+<%end%>
+<%end%>
+</div>
+</section>
+
+  <% else %>
+
+    <h4>Vous n'avez pas encore crée d'événements</h4>
+
+ <% end %>

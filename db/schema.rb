@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 2020_11_03_095747) do
   create_table "events", force: :cascade do |t|
     t.bigint "admin_id"
     t.bigint "user_id"
-    t.string "title"
-    t.text "description"
     t.datetime "start_date"
     t.integer "duration"
+    t.string "title"
+    t.text "description"
     t.integer "price"
     t.string "location"
     t.datetime "created_at", null: false
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_11_03_095747) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.text "description"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.text "description"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reset_password_token"

@@ -1,29 +1,55 @@
-<p id="notice"><%= notice %></p>
+<h2 class="h1-responsive font-weight-bold my-5">Bienvenue sur la page de l'event n°<%= @event.id %></h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+   <div class="my-3 p-3 bg-white rounded box-shadow text-success">
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
+       <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">TITRE</strong>
+           <%= @event.title%>
+         </p>
+       </div>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @event.duration %>
-</p>
+       <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">DESCRIPTION</strong>
+           <%= @event.description%>
+         </p>
+       </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @event.price %>
-</p>
+       <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">DATE</strong>
+             <a> <%= @event.start_date %> </a>
+         </p>
+       </div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+        <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">DUREE</strong>
+           <a> <%= @event.duration %> minutes </a>
+         </p>
+       </div>
+
+        <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">PRICE</strong>
+           <a> <%= @event.price %>€ </a>
+         </p>
+       </div>
+
+        <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">LOCATION</strong>
+           <a> <%= @event.location %> </a>
+         </p>
+       </div>
+
+       <div class="media text-dark pt-3">
+         <p class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+           <strong class="d-block text-gray-dark">ORGANISATEUR</strong>
+           <a> XXX </a>
+         </p>
+       </div>
+
+     </div>
