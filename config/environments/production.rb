@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "EventBrite_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "eventbrite_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -91,5 +91,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'https://event-brite-light.herokuapp.com/' }
+
+  config.action_mailer.default_url_options = { :host => 'https://event-brite-light.heroku.com' }
+
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::DEBUG
+
 end
