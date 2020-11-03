@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   def index
   end
 
@@ -12,8 +13,7 @@ class EventsController < ApplicationController
                   			  'title' => params[:title],
                   			   'description' => params[:description],
                   			    'price' => params[:price],
-                  			     'location' => params[:location],
-                  			 )
+                  			     'location' => params[:location])
     @event.admin_id = current_user.id
    		if @event.save # essaie de sauvegarder en base
      		 flash[:success] = "Nouvel événement bien créé !"

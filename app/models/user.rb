@@ -4,17 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #after_create :welcome_send
 
-  has_many :attendances
+  validates :first_name, presence: true, on: :update
+  has_many :attendances, foreign_key: 'participant_id'
   has_many :events, through: :attendances
 
   #to make a difference between the users who organise events and the users who participate only
 	has_many :organisers, foreign_key: 'admin_id', class_name: "Event"
 
-  after_create :welcome_send
-  def welcome_send
-  	UserMailer.welcome_email(self).deliver_now
+  after_create :send_welcome
+  def send_welcome
+    UserMailer.welcome_email(self).deliver_now
   end
 
 end

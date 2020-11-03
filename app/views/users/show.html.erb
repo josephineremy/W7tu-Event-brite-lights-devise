@@ -1,4 +1,5 @@
-<h2 class="h1-responsive font-weight-bold my-5">Bienvenue sur ton profil <%= @user.email%></h2>
+<div class="pl-5">
+<h2 class="h1-responsive font-weight-bold my-5">Bienvenue sur ton profil <%= @user.first_name %></h2>
 
 
 	<div class="my-3 p-3 bg-white rounded box-shadow text-success">
@@ -31,15 +32,17 @@
             <%= @user.email%>
           </p>
         </div>
-
+				<br>
+				<%= link_to "Editer ton profil", edit_user_path %> <br><br>
+				<%= link_to "Editer tes informations sur ton compte", edit_user_registration_path %>
    </div>
 
 
-</br>
+</br></br></br>
 
   <% if Event.find_by(admin_id: @user.id) %>
 
-  <h4>Vos événements :</h4>
+  <h4>Tes événements :</h4>
 </br>
 
 <section>
@@ -70,6 +73,7 @@
 
   <% else %>
 
-    <h4>Vous n'avez pas encore crée d'événements</h4>
+    <h4>Tu n'as pas encore crée d'événement</h4>
 
  <% end %>
+ </div>
